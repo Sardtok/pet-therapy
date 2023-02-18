@@ -39,6 +39,12 @@
 		1E80AAA22992FAAB008C64A2 /* PetPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80AAA12992FAAB008C64A2 /* PetPreview.swift */; };
 		1E861D122989BFD000EA074E /* RenderingDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E861D112989BFD000EA074E /* RenderingDependencies.swift */; };
 		1E861D142989C49F00EA074E /* DependencyInjectionUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 1E861D132989C49F00EA074E /* DependencyInjectionUtils */; };
+		1E8D458D29A18D970026A26E /* Python.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D458C29A18D970026A26E /* Python.swift */; };
+		1E8D459029A18DCE0026A26E /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1E8D458F29A18DCE0026A26E /* PythonKit */; };
+		1E8D459229A18DE80026A26E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8D459129A18DE80026A26E /* SystemConfiguration.framework */; };
+		1E8D459629A18E120026A26E /* Python.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8D459429A18E120026A26E /* Python.xcframework */; };
+		1E8D459729A18E120026A26E /* python-stdlib in Resources */ = {isa = PBXBuildFile; fileRef = 1E8D459529A18E120026A26E /* python-stdlib */; };
+		1E8D459929A18E200026A26E /* pypets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8D459829A18E200026A26E /* pypets */; };
 		1E93C60C29624891007A5B91 /* ImportPetDragAndDropCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93C60B29624891007A5B91 /* ImportPetDragAndDropCoordinator.swift */; };
 		1E93C60F2962E781007A5B91 /* DeletePetButtonCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93C60E2962E781007A5B91 /* DeletePetButtonCoordinator.swift */; };
 		1E98A007298C7E7800CD88B9 /* ImportVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E98A006298C7E7800CD88B9 /* ImportVerifier.swift */; };
@@ -124,6 +130,11 @@
 		1E80AA9F2992F826008C64A2 /* SpeciesNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesNames.swift; sourceTree = "<group>"; };
 		1E80AAA12992FAAB008C64A2 /* PetPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetPreview.swift; sourceTree = "<group>"; };
 		1E861D112989BFD000EA074E /* RenderingDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingDependencies.swift; sourceTree = "<group>"; };
+		1E8D458C29A18D970026A26E /* Python.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Python.swift; sourceTree = "<group>"; };
+		1E8D459129A18DE80026A26E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1E8D459429A18E120026A26E /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Python.xcframework; sourceTree = "<group>"; };
+		1E8D459529A18E120026A26E /* python-stdlib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "python-stdlib"; sourceTree = "<group>"; };
+		1E8D459829A18E200026A26E /* pypets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pypets; sourceTree = "<group>"; };
 		1E93C60229623192007A5B91 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1E93C60B29624891007A5B91 /* ImportPetDragAndDropCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportPetDragAndDropCoordinator.swift; sourceTree = "<group>"; };
 		1E93C60E2962E781007A5B91 /* DeletePetButtonCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePetButtonCoordinator.swift; sourceTree = "<group>"; };
@@ -180,14 +191,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EF813B5297177A400D6B4E6 /* Yage in Frameworks */,
+				1E8D459229A18DE80026A26E /* SystemConfiguration.framework in Frameworks */,
 				1E2527392989AB2C00756762 /* Swinject in Frameworks */,
 				1EF813C5297177A500D6B4E6 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				1EF813BB297177A400D6B4E6 /* Schwifty in Frameworks */,
 				1EF813B3297177A400D6B4E6 /* DesignSystem in Frameworks */,
+				1E8D459029A18DCE0026A26E /* PythonKit in Frameworks */,
 				1EF813C7297177A500D6B4E6 /* FirebaseCrashlytics in Frameworks */,
 				1EAB52602989B8F800EA4034 /* Rendering in Frameworks */,
 				1EF813BD297177A400D6B4E6 /* RateKit in Frameworks */,
 				1EE90BFE299805B00019CA9A /* Kingfisher in Frameworks */,
+				1E8D459629A18E120026A26E /* Python.xcframework in Frameworks */,
 				1EF813B9297177A400D6B4E6 /* LaunchAtLogin in Frameworks */,
 				1EF813C3297177A400D6B4E6 /* WindowsDetector in Frameworks */,
 				1E861D142989C49F00EA074E /* DependencyInjectionUtils in Frameworks */,
@@ -201,6 +215,7 @@
 		1E29447629739BFC000A90B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E8D459129A18DE80026A26E /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -290,6 +305,14 @@
 			path = Dependencies;
 			sourceTree = "<group>";
 		};
+		1E8D458B29A18D8F0026A26E /* Python */ = {
+			isa = PBXGroup;
+			children = (
+				1E8D458C29A18D970026A26E /* Python.swift */,
+			);
+			path = Python;
+			sourceTree = "<group>";
+		};
 		1E93C5FB29605EDE007A5B91 /* CustomPets */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,14 +379,17 @@
 		A65FE354283D80C900D1F5C8 = {
 			isa = PBXGroup;
 			children = (
-				A66B2C1B28746D2E00D695EA /* Desktop Pets.app */,
-				1E29446E29739B9B000A90B0 /* Desktop Pets Tests.xctest */,
 				1E7E1E8B2997FD6B00F3E8FD /* contributors */,
+				1E29446E29739B9B000A90B0 /* Desktop Pets Tests.xctest */,
+				A66B2C1B28746D2E00D695EA /* Desktop Pets.app */,
 				1E6AA70229970FCC002245E7 /* docs */,
+				1E29447629739BFC000A90B0 /* Frameworks */,
+				1E8D459829A18E200026A26E /* pypets */,
+				1E8D459529A18E120026A26E /* python-stdlib */,
+				1E8D459429A18E120026A26E /* Python.xcframework */,
 				A6FB7D4328740F8E00AB872E /* Resources */,
 				A6FB7D5128740F8E00AB872E /* Sources */,
 				A6FB7D8828740F9A00AB872E /* Tests */,
-				1E29447629739BFC000A90B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -394,6 +420,7 @@
 				1E2D7D4729747D8C00DC7D5F /* News */,
 				1EAEA8F02970D32900AB3EB0 /* OnScreen */,
 				1E36C818295F533D008EFB28 /* PetsSelection */,
+				1E8D458B29A18D8F0026A26E /* Python */,
 				1E36C811295F4DB6008EFB28 /* StatusBar */,
 				1E5AACB329716CB9007531DF /* Tracking */,
 			);
@@ -454,6 +481,7 @@
 				A6E5AAC32860525A008AA653 /* Sources */,
 				A6E5AAD72860525A008AA653 /* Frameworks */,
 				A6E5AAE52860525A008AA653 /* Resources */,
+				1E8D459329A18DEE0026A26E /* Sign python-stdlib */,
 				A6E5B59B2860525A008AA653 /* Launch at Login Helper */,
 			);
 			buildRules = (
@@ -475,6 +503,7 @@
 				1E861D132989C49F00EA074E /* DependencyInjectionUtils */,
 				1E326812298C73980019C346 /* CustomPets */,
 				1EE90BFD299805B00019CA9A /* Kingfisher */,
+				1E8D458F29A18DCE0026A26E /* PythonKit */,
 			);
 			productName = MacPets;
 			productReference = A66B2C1B28746D2E00D695EA /* Desktop Pets.app */;
@@ -515,6 +544,7 @@
 				1E5AACAA29716C2E007531DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				1E2527372989AB2C00756762 /* XCRemoteSwiftPackageReference "Swinject" */,
 				1EE90BFC299805B00019CA9A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1E8D458E29A18DCE0026A26E /* XCRemoteSwiftPackageReference "PythonKit" */,
 			);
 			productRefGroup = A65FE354283D80C900D1F5C8;
 			projectDirPath = "";
@@ -540,6 +570,8 @@
 			files = (
 				1E1EBF31291F9E1800D2323D /* dogica.ttf in Resources */,
 				1EF813F029718A1600D6B4E6 /* GoogleService-Info.plist in Resources */,
+				1E8D459729A18E120026A26E /* python-stdlib in Resources */,
+				1E8D459929A18E200026A26E /* pypets in Resources */,
 				A6FB7D6E28740F8E00AB872E /* Assets.xcassets in Resources */,
 				1EE90BFB299802690019CA9A /* contributors.json in Resources */,
 				1EC3B0B829637128009ECD6A /* Species in Resources */,
@@ -554,6 +586,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1E8D459329A18DEE0026A26E /* Sign python-stdlib */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Sign python-stdlib";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Signing as Apple Development: Federico Curzel (R4A7YGNWNX) (C8A4C7D761E615E9CD02F70E0606D1DEE7B99E47)\"\nfind \"$CODESIGNING_FOLDER_PATH/Contents/Resources/python-stdlib/lib-dynload\" -name \"*.so\" -exec /usr/bin/codesign --force --sign \"C8A4C7D761E615E9CD02F70E0606D1DEE7B99E47\" -o runtime --timestamp=none --preserve-metadata=identifier,entitlements,flags --generate-entitlement-der {} \\;\n";
+		};
 		A6E5AAC22860525A008AA653 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -636,6 +687,7 @@
 				1EAEA91A2970D32900AB3EB0 /* PetEntity.swift in Sources */,
 				1E36C825295F533D008EFB28 /* PetsSelectionViewModel.swift in Sources */,
 				A6FB7D8728740F8E00AB872E /* AboutView.swift in Sources */,
+				1E8D458D29A18D970026A26E /* Python.swift in Sources */,
 				1E93C60F2962E781007A5B91 /* DeletePetButtonCoordinator.swift in Sources */,
 				1E98A007298C7E7800CD88B9 /* ImportVerifier.swift in Sources */,
 				1EAEA91C2970D32900AB3EB0 /* Animations.swift in Sources */,
@@ -982,6 +1034,14 @@
 				minimumVersion = 1.0.3;
 			};
 		};
+		1E8D458E29A18DCE0026A26E /* XCRemoteSwiftPackageReference "PythonKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pvieito/PythonKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		1EE263FC289285D200771170 /* XCRemoteSwiftPackageReference "schwifty" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/curzel-it/schwifty";
@@ -1031,6 +1091,11 @@
 		1E861D132989C49F00EA074E /* DependencyInjectionUtils */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DependencyInjectionUtils;
+		};
+		1E8D458F29A18DCE0026A26E /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E8D458E29A18DCE0026A26E /* XCRemoteSwiftPackageReference "PythonKit" */;
+			productName = PythonKit;
 		};
 		1EAB525F2989B8F800EA4034 /* Rendering */ = {
 			isa = XCSwiftPackageProductDependency;
