@@ -13,9 +13,10 @@ def setup(config: Config, resources_path: str) -> Config:
 def build_worlds(screens_geometry: List[str]) -> List[World]:
     return [World(*name_and_frame(geo)) for geo in screens_geometry]
 
-def entity_builder(species, world_bounds): 
+def entity_builder(species, world): 
     return PetEntity(
-        species, world_bounds, 
+        species, 
+        world, 
         pet_size = Config.shared.pet_size,
         gravity = Config.shared.gravity_enabled,
     )

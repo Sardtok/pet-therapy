@@ -2,22 +2,22 @@
   "animations": [
       {
         "id": "front",
-        "position": "fromEntityBottomLeft",
+        "anchor": "bottom",
         "requiredLoops": 10
       },
       {
         "id": "smell",
-        "position": "fromEntityBottomLeft",
+        "anchor": "bottom",
         "requiredLoops": 10
       },
       {
         "id": "talk",
-        "position": "fromEntityBottomLeft",
+        "anchor": "bottom",
         "requiredLoops": 20
       },
       {
         "id": "power",
-        "position": "fromEntityBottomLeft",
+        "anchor": "bottom",
         "requiredLoops": 10
       }
   ],

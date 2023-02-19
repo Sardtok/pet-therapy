@@ -7,36 +7,20 @@ public struct EntityAnimation: Codable {
     public let requiredLoops: Int?
 
     let size: CGSize?
-    let position: Position
+    let anchor: AnchorPoint
 
     public init(
         id: String,
         size: CGSize? = nil,
-        position: Position = .fromEntityBottomLeft,
+        anchor: AnchorPoint = .bottom,
         facingDirection: CGVector? = nil,
         requiredLoops: Int? = nil
     ) {
         self.id = id
         self.size = size
-        self.position = position
+        self.anchor = anchor
         self.facingDirection = facingDirection
         self.requiredLoops = requiredLoops
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.facingDirection = try container.decodeIfPresent(CGVector.self, forKey: .facingDirection)
-        self.requiredLoops = try container.decodeIfPresent(Int.self, forKey: .requiredLoops)
-        self.size = try container.decodeIfPresent(CGSize.self, forKey: .size)
-        
-        do {
-            self.position = try container.decode(EntityAnimation.Position.self, forKey: .position)
-        } catch {
-            let legacyPosition = try container.decode([String: [String: String]].self, forKey: .position)
-            let positionKey = legacyPosition.keys.first ?? ""
-            self.position = Position(rawValue: positionKey) ?? .fromEntityBottomLeft
-        }
     }
 
     public func frame(for entity: Entity) -> CGRect {
@@ -62,25 +46,9 @@ public struct EntityAnimation: Codable {
         newSize: CGSize,
         in worldBounds: CGRect
     ) -> CGPoint {
-        switch position {
-        case .fromEntityBottomLeft:
-            return entityFrame.origin
-                .offset(y: entityFrame.size.height - newSize.height)
-
-        case .entityTopLeft:
-            return entityFrame.origin
-
-        case .worldTopLeft:
-            return worldBounds.topLeft
-
-        case .worldTopRight:
-            return worldBounds.topRight.offset(x: -entityFrame.width)
-
-        case .worldBottomRight:
-            return worldBounds.bottomRight.offset(by: entityFrame.size.oppositeSign())
-
-        case .worldBottomLeft:
-            return worldBounds.bottomLeft.offset(y: -entityFrame.height)
+        switch anchor {
+        case .bottom: return entityFrame.origin.offset(y: entityFrame.size.height - newSize.height)
+        case .top: return entityFrame.origin
         }
     }
 }
@@ -90,13 +58,9 @@ extension EntityAnimation: CustomStringConvertible {
 }
 
 public extension EntityAnimation {
-    enum Position: String, Codable {
-        case fromEntityBottomLeft
-        case entityTopLeft
-        case worldTopLeft
-        case worldBottomLeft
-        case worldTopRight
-        case worldBottomRight
+    enum AnchorPoint: String, Codable {
+        case top
+        case bottom
     }
 }
 
@@ -105,7 +69,7 @@ public extension EntityAnimation {
         EntityAnimation(
             id: id,
             size: size,
-            position: position,
+            anchor: anchor,
             facingDirection: facingDirection,
             requiredLoops: loops
         )

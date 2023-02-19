@@ -29,17 +29,17 @@ ape_json = '''
   "animations": [
     {
       "id": "front",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 5
     },
     {
       "id": "eat",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 5
     },
     {
       "id": "sleep",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 20
     }
   ],

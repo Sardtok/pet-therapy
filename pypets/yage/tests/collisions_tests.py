@@ -15,7 +15,7 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "main",
             Rect(0, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
 
         def test_entity(index):
@@ -23,7 +23,7 @@ class CollisionsTests(unittest.TestCase):
                 SPECIES_AGENT,
                 f'other-{index}',
                 Rect(0.1 * index, 0, 1, 1),
-                self.test_env.bounds
+                self.test_env
             )
         others = [test_entity(i) for i in range(12)]
         collisions = main.collisions(others)
@@ -37,26 +37,26 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "entity1",
             Rect(0, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         entity2 = Entity(
             SPECIES_AGENT,
             "entity2",
             Rect(2, 2, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         collision = entity1.collision(entity2)
         self.assertIsNone(collision)
 
     def test_equal_entities_do_collide(self):
-        entity = Entity(SPECIES_AGENT, "someEntity", Rect(0, 0, 0, 0), self.test_env.bounds)
+        entity = Entity(SPECIES_AGENT, "someEntity", Rect(0, 0, 0, 0), self.test_env)
         collision = entity.collision(entity)
         self.assertIsNotNone(collision)
 
     def test_entities_with_same_frame_collide(self):
 
-        entity1 = Entity(SPECIES_AGENT, "entity1", Rect(0, 0, 0, 0), self.test_env.bounds)
-        entity2 = Entity(SPECIES_AGENT, "entity2", Rect(0, 0, 0, 0), self.test_env.bounds)
+        entity1 = Entity(SPECIES_AGENT, "entity1", Rect(0, 0, 0, 0), self.test_env)
+        entity2 = Entity(SPECIES_AGENT, "entity2", Rect(0, 0, 0, 0), self.test_env)
         collision = entity1.collision(entity2)
         self.assertIsNotNone(collision)
 
@@ -65,13 +65,13 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "entity1",
             Rect(0, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         entity2 = Entity(
             SPECIES_AGENT,
             "entity2",
             Rect(1, 1, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         collision = entity1.collision(entity2)
         expected_intersection = Rect(1, 1, 0, 0)
@@ -83,13 +83,13 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "entity1",
             Rect(0, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         entity2 = Entity(
             SPECIES_AGENT,
             "entity2",
             Rect(1, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         collision = entity1.collision(entity2)
         expected_intersection = Rect(1, 0, 0, 1)
@@ -101,13 +101,13 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "entity1",
             Rect(0, 0, 2, 2),
-            self.test_env.bounds
+            self.test_env
         )
         entity2 = Entity(
             SPECIES_AGENT,
             "entity2",
             Rect(1, 1, 2, 2),
-            self.test_env.bounds
+            self.test_env
         )
         collision = entity1.collision(entity2)
         expected_intersection = Rect(1, 1, 1, 1)
@@ -119,13 +119,13 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "entity1",
             Rect(0, 0, 2, 2),
-            self.test_env.bounds
+            self.test_env
         )
         entity2 = Entity(
             SPECIES_AGENT,
             "entity2",
             Rect(1, 1, 2, 2),
-            self.test_env.bounds
+            self.test_env
         )
         collision = entity1.collision(entity2)
         expected_intersection = Rect(1, 1, 1, 1)
@@ -133,8 +133,8 @@ class CollisionsTests(unittest.TestCase):
         self.assertEqual(collision.intersection, expected_intersection)
 
     def test_collision_with_ephemeral_entities_are_properly_marked(self):
-        entity1 = Entity(SPECIES_AGENT, "entity1", Rect.zero(), self.test_env.bounds)
-        entity2 = Entity(SPECIES_AGENT, "entity2", Rect.zero(), self.test_env.bounds)
+        entity1 = Entity(SPECIES_AGENT, "entity1", Rect.zero(), self.test_env)
+        entity2 = Entity(SPECIES_AGENT, "entity2", Rect.zero(), self.test_env)
         entity2.is_ephemeral = True
         collision = entity1.collision(entity2)
         self.assertTrue(collision.is_ephemeral)
@@ -144,13 +144,13 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "entity1",
             Rect(0, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         entity2 = Entity(
             SPECIES_AGENT,
             "entity2",
             Rect(0.9, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         collision = entity1.collision(entity2)
         sides = collision.sides()
@@ -161,13 +161,13 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "entity1",
             Rect(0, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         entity2 = Entity(
             SPECIES_AGENT,
             "entity2",
             Rect(0.9, 0.25, 1, 0.5),
-            self.test_env.bounds
+            self.test_env
         )
         collision = entity1.collision(entity2)
         sides = collision.sides()
@@ -178,13 +178,13 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "entity1",
             Rect(0, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         entity2 = Entity(
             SPECIES_AGENT,
             "entity1",
             Rect(0.9, -1, 1, 3),
-            self.test_env.bounds
+            self.test_env
         )
         collision = entity1.collision(entity2)
         sides = collision.sides()
@@ -195,13 +195,13 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "entity1",
             Rect(0, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         entity2 = Entity(
             SPECIES_AGENT,
             "entity2",
             Rect(0.9, 0.9, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         collision = entity1.collision(entity2)
         sides = collision.sides()
@@ -212,13 +212,13 @@ class CollisionsTests(unittest.TestCase):
             SPECIES_AGENT,
             "entity1",
             Rect(0, 0, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         entity2 = Entity(
             SPECIES_AGENT,
             "entity2",
             Rect(0.9, -0.9, 1, 1),
-            self.test_env.bounds
+            self.test_env
         )
         collision = entity1.collision(entity2)
         sides = collision.sides()

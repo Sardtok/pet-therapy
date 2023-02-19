@@ -2,7 +2,7 @@
   "animations": [
     {
       "id": "front",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 4
     }
   ],

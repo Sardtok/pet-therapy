@@ -49,7 +49,7 @@ All of these need to be defined in a json file, for example:
   "animations": [
     {
       "id": "front",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 5
     },
     ...

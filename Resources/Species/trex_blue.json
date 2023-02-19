@@ -2,41 +2,41 @@
   "animations": [
     {
       "id": "front",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 2
     },
     {
       "id": "idle",
-      "position": "fromEntityBottomLeft"
+      "anchor": "bottom"
     },
     {
       "id": "eat",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 4
     },
     {
       "id": "selfie",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 2
     },
     {
       "id": "texting",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 2
     },
     {
       "id": "roar",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 3
     },
     {
       "id": "guitar",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 3
     },
     {
       "id": "fireball",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 2
     }
   ],

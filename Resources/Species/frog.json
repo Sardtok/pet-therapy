@@ -2,22 +2,22 @@
   "animations": [
     {
       "id": "hypno",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 5
     },
     {
       "id": "front",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 5
     },
     {
       "id": "idle",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 5
     },
     {
       "id": "eat",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 3
     }
   ],

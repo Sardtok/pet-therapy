@@ -2,12 +2,12 @@
   "animations": [
     {
       "id": "idle",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 50
     },
     {
       "id": "front",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 5
     }
   ],

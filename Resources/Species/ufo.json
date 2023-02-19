@@ -2,7 +2,7 @@
   "animations": [
     {
       "id": "bombing",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "size": [
         4,
         2
@@ -10,11 +10,11 @@
     },
     {
       "id": "landing",
-      "position": "fromEntityBottomLeft"
+      "anchor": "bottom"
     },
     {
       "id": "portal",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "size": [
         2,
         1
@@ -22,7 +22,7 @@
     },
     {
       "id": "crash",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "size": [
         2,
         1

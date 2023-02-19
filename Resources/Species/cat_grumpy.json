@@ -2,27 +2,27 @@
   "animations": [
     {
       "id": "front",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 5
     },
     {
       "id": "idle",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 2
     },
     {
       "id": "eat",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 10
     },
     {
       "id": "sleep",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 50
     },
     {
       "id": "angry",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 7
     }
   ],

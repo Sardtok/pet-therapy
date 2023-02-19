@@ -2,12 +2,12 @@
   "animations": [
     {
       "id": "front",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 50
     },
     {
       "id": "sleep",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 20
     }
   ],

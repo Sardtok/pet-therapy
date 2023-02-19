@@ -1,4 +1,4 @@
-import pdb
+from datetime import datetime
 from typing import Any, List, Optional, Tuple
 from yage.models.animations import EntityAnimation
 from yage.models.capability import CapabilitiesDiscoveryService
@@ -9,10 +9,11 @@ from yage.utils.geometry import Rect, Vector
 from yage.utils.logger import Logger
 
 class Entity:
-    def __init__(self, species: 'Species', id: str, frame: 'Rect', world_bounds: 'Rect'):
+    def __init__(self, species, id, frame, world):
         self._animation = None
         self._animation_loops = None
         self.capabilities = []
+        self.creation_date = datetime.now()
         self.direction = Vector.zero()
         self.fps = species.fps
         self.frame = frame
@@ -24,9 +25,13 @@ class Entity:
         self.speed = 0
         self.sprite = None
         self.state = EntityState.move
-        self.world_bounds = world_bounds
+        self.world = world
         self.z_index = 0
         self._install_capabilities()
+
+    @property
+    def world_bounds(self):
+        return self.world.bounds
 
     def animation(self) -> Tuple['EntityAnimation', int]:
         if self.state != EntityState.animation: return (None, None)

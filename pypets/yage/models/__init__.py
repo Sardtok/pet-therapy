@@ -1,4 +1,4 @@
-from .animations import EntityAnimation, EntityAnimationPosition
+from .animations import EntityAnimation, EntityAnimationAnchorPoint
 from .capability import Capability, CapabilitiesDiscoveryService
 from .collisions import Collision, CollisionSide
 from .entity_state import EntityState

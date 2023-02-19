@@ -2,26 +2,26 @@
   "animations": [
     {
       "id": "front",
-      "position": "fromEntityBottomLeft"
+      "anchor": "bottom"
     },
     {
       "id": "bored",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 15
     },
     {
       "id": "talking",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 2
     },
     {
       "id": "staring",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 15
     },
     {
       "id": "shouting",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 2
     }
   ],

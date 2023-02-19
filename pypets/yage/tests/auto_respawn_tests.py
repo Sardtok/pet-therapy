@@ -12,7 +12,7 @@ class AutoRespawnTests(unittest.TestCase):
             SPECIES_AGENT,
             "test",
             Rect(0, 0, 1, 1),
-            Rect(0, 0, 10, 10)
+            World('', Rect(0, 0, 10, 10))
         )
         self.respawner = self.entity.install(AutoRespawn)
         self.respawner.kill()

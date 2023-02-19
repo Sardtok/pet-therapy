@@ -14,12 +14,9 @@ class World:
     
     def set_bounds(self, new_bounds: Rect):
         self.bounds = new_bounds
-        for child in self.children: child.world_bounds = new_bounds
-
         hotspots = [hotspot.value for hotspot in Hotspot]        
         old_bounds = [child for child in self.children if child.id in hotspots]
         for bound in old_bounds: bound.kill()
-
         self.children = [child for child in self.children if child.id not in hotspots]
         self.children.extend(self._hotspot_entities())
     

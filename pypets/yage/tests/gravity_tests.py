@@ -13,7 +13,7 @@ class GravityTests(unittest.TestCase):
             species=SPECIES_AGENT,
             id="player",
             frame=Rect(x=0, y=0, width=50, height=50),
-            world_bounds=self.env.bounds
+            world=self.env
         )
         self.player.speed = 1
         self.player.direction = Vector(1, 0)
@@ -27,7 +27,7 @@ class GravityTests(unittest.TestCase):
             species=SPECIES_AGENT,
             id="ground1",
             frame=Rect(x=0, y=100, width=200, height=50),
-            world_bounds=self.env.bounds
+            world=self.env
         )
         self.env.children.append(ground1)
 
@@ -50,7 +50,7 @@ class GravityTests(unittest.TestCase):
             species=SPECIES_AGENT,
             id="ground1",
             frame=Rect(x=0, y=100, width=200, height=50),
-            world_bounds=self.env.bounds
+            world=self.env
         )
         ground1.is_static = True
         self.env.children.append(ground1)
@@ -65,9 +65,7 @@ class GravityTests(unittest.TestCase):
         self.assertEqual(self.player.state, EntityState.free_fall)
         self.assertEqual(self.player.direction, Gravity.fall_direction)
 
-        for i in range(80): 
-            self.env.update(after=0.1)
-            print(i, self.player.frame, self.player.speed)
+        for _ in range(80): self.env.update(after=0.1)
         self.assertEqual(self.player.state, EntityState.move)
         self.assertEqual(self.player.frame.min_y, ground1.frame.min_y - self.player.frame.height)
         self.assertEqual(self.player.direction, go_right)
@@ -77,7 +75,7 @@ class GravityTests(unittest.TestCase):
             species=SPECIES_AGENT,
             id="ground1",
             frame=Rect(x=0, y=100, width=200, height=50),
-            world_bounds=self.env.bounds
+            world=self.env
         )
         ground1.is_static = True
         self.env.children.append(ground1)
@@ -97,7 +95,7 @@ class GravityTests(unittest.TestCase):
             species=SPECIES_AGENT,
             id="ground1",
             frame=Rect(x=369, y=354, width=250, height=48),
-            world_bounds=self.env.bounds
+            world=self.env
         )
         ground1.is_static = True
         self.env.children.append(ground1)
@@ -106,7 +104,7 @@ class GravityTests(unittest.TestCase):
             species=SPECIES_AGENT,
             id="ground2",
             frame=Rect(x=396, y=402, width=687, height=70),
-            world_bounds=self.env.bounds
+            world=self.env
         )
         ground2.is_static = True
         self.env.children.append(ground2)

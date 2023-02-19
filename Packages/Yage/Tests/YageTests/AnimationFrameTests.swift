@@ -18,7 +18,7 @@ class AnimationFrameTests: XCTestCase {
         let animation = EntityAnimation(
             id: "test",
             size: nil,
-            position: .entityTopLeft,
+            anchor: .top,
             facingDirection: nil
         )
         XCTAssertEqual(entity.frame, animation.frame(for: entity))
@@ -28,7 +28,7 @@ class AnimationFrameTests: XCTestCase {
         let animation = EntityAnimation(
             id: "test",
             size: CGSize(width: 2, height: 2),
-            position: .fromEntityBottomLeft,
+            anchor: .bottom,
             facingDirection: nil
         )
         let expected = CGRect(x: 5, y: 0, width: 10, height: 10)

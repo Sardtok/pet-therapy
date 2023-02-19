@@ -3,7 +3,7 @@ import re
 from typing import List, Optional
 from config.assets import AssetsProvider
 from yage.models import Species
-from yage.models.animations import EntityAnimation, EntityAnimationPosition
+from yage.models.animations import EntityAnimation, EntityAnimationAnchorPoint
 
 class SpeciesProvider:
     def __init__(self):
@@ -24,28 +24,9 @@ class SpeciesProvider:
         try:
             json_object = json.loads(json_string)
             species = Species(**_to_snake_case(json_object))
-            self._adjust_animations(species)
             return species
         except AttributeError:
             return None
-
-    def _adjust_animations(self, species):
-        """
-        Need to figure out how to import jsonpickle to do this automatically.
-        Also, we need to keep support for legacy animation position format:
-        - New one: `"position": "fromEntityBottomLeft"`
-        - Old one `"position": {"fromEntityBottomLeft": {}}`
-        """
-        animations = [_to_snake_case(a) for a in species.animations]
-        animations = [EntityAnimation(**a) for a in animations]        
-        for animation in animations:
-            if animation.position.__class__ is dict:
-                try: 
-                    key = animation.position.keys()[0]
-                    animation.position = EntityAnimationPosition[key]
-                except:
-                    animation.position = EntityAnimationPosition.from_entity_bottom_left
-        species.animations = animations
 
 
 def _to_snake_case(dictionary: dict) -> dict:

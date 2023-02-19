@@ -1,6 +1,6 @@
 import unittest
 
-from yage.models.animations import EntityAnimation, EntityAnimationPosition
+from yage.models.animations import EntityAnimation, EntityAnimationAnchorPoint
 from yage.models.entity import Entity
 from yage.utils.geometry import Rect, Size
 from yage.models.species import SPECIES_AGENT
@@ -19,7 +19,7 @@ class AnimationFrameTests(unittest.TestCase):
         animation = EntityAnimation(
             "test",
             None,
-            EntityAnimationPosition.entity_top_left,
+            EntityAnimationAnchorPoint.top,
             None
         )
         self.assertEqual(self.entity.frame, animation.frame(self.entity))
@@ -28,7 +28,7 @@ class AnimationFrameTests(unittest.TestCase):
         animation = EntityAnimation(
             "test",
             Size(width=2, height=2),
-            EntityAnimationPosition.from_entity_bottom_left,
+            EntityAnimationAnchorPoint.bottom,
             None
         )
         expected = Rect(x=5, y=0, width=10, height=10)

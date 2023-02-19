@@ -2,22 +2,22 @@
   "animations": [
     {
       "id": "front",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 4
     },
     {
       "id": "sleep",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 10
     },
     {
       "id": "eat",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 4
     },
     {
       "id": "ball",
-      "position": "fromEntityBottomLeft"
+      "anchor": "bottom"
     }
   ],
   "capabilities": [

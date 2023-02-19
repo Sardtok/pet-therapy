@@ -2,21 +2,21 @@
   "animations": [
     {
       "id": "front",
-      "position": "fromEntityBottomLeft"
+      "anchor": "bottom"
     },
     {
       "id": "eat",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 2
     },
     {
       "id": "tsundere",
-      "position": "fromEntityBottomLeft",
+      "anchor": "bottom",
       "requiredLoops": 3
     },
     {
       "id": "backflip",
-      "position": "fromEntityBottomLeft"
+      "anchor": "bottom"
     }
   ],
   "capabilities": [

@@ -5,13 +5,13 @@ from yage.models import *
 from yage.utils.geometry import *
 
 class PetEntity(Entity):
-    def __init__(self, species: 'Species', world_bounds: 'Rect', **kwargs):
+    def __init__(self, species, world, **kwargs):
         pet_size = kwargs.get('pet_size', 75)
         super().__init__(
             species, 
             PetEntity.next_id(species), 
             Rect(0, 0, pet_size, pet_size),
-            world_bounds
+            world
         )
         self.install(Gravity)
         self.reset_speed()

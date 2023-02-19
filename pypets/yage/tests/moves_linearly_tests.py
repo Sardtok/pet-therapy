@@ -11,7 +11,7 @@ class LinearMovementTests(unittest.TestCase):
             species=SPECIES_AGENT,
             id="entity",
             frame=Rect(x=0, y=0, width=1, height=1),
-            world_bounds=Rect(x=0, y=0, width=1000, height=1000)
+            world=World('', Rect(x=0, y=0, width=1000, height=1000))
         )
         entity.install(LinearMovement)
         entity.direction = Vector(1, 0)
