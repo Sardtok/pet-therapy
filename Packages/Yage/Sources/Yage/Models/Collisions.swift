@@ -11,13 +11,13 @@ public struct Collision: Equatable {
     let otherBody: CGRect
 
     init(of source: Entity, with other: Entity, on intersection: CGRect) {
-        otherId = other.id
-        isEphemeral = other.isEphemeral
-        self.other = other
         self.intersection = intersection
-        sourceBody = source.frame
-        otherBody = other.frame
+        isEphemeral = other.isEphemeral
         isOverlapping = intersection.width >= 1 && intersection.height >= 1
+        self.other = other
+        otherId = other.id
+        otherBody = other.frame
+        sourceBody = source.frame
     }
 }
 
