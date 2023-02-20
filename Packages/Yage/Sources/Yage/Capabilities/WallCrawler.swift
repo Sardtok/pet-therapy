@@ -1,38 +1,71 @@
 import SwiftUI
 
 public class WallCrawler: Capability {
-    public override func install(on subject: Entity) {
-        super.install(on: subject)
-        subject.capability(for: BounceOnLateralCollisions.self)?.isEnabled = false
-        subject.capability(for: FlipHorizontallyWhenGoingLeft.self)?.isEnabled = false
-    }
-
     override public func doUpdate(with collisions: Collisions, after time: TimeInterval) {
         guard case .move = subject?.state else { return }
         guard let direction = subject?.direction else { return }
-
-        let isGoingUp = direction.dy < -0.0001
-        let isGoingRight = direction.dx > 0.0001
-        let isGoingDown = direction.dy > 0.0001
-        let isGoingLeft = direction.dx < -0.0001
-
-        if isGoingUp && touchesScreenTop() {
+        
+        if isGoingUp(direction) && touchesScreenTop() {
             crawlAlongTopBound()
             return
         }
-        if isGoingRight && touchesScreenRight() {
+        if isGoingRight(direction) && touchesScreenRight() {
             crawlUpRightBound()
             return
         }
-        if isGoingDown && touchesScreenBottom() {
+        if isGoingDown(direction) && touchesScreenBottom() {
             crawlAlongBottomBound()
             return
         }
-        if isGoingLeft && touchesScreenLeft() {
+        if isGoingLeft(direction) && touchesScreenLeft() {
             crawlDownLeftBound()
             return
         }
     }
+    
+    // MARK: - Direction
+    
+    private func isGoingUp(_ direction: CGVector) -> Bool {
+        return direction.dy < -0.0001
+    }
+    
+    private func isGoingRight(_ direction: CGVector) -> Bool {
+        return direction.dx > 0.0001
+    }
+    
+    private func isGoingDown(_ direction: CGVector) -> Bool {
+        return direction.dy > 0.0001
+    }
+    
+    private func isGoingLeft(_ direction: CGVector) -> Bool {
+        return direction.dx < -0.0001
+    }
+    
+    // MARK: - Collisions
+
+    private func touchesScreenTop() -> Bool {
+        guard let subject else { return false }
+        return subject.frame.minY <= 0
+    }
+
+    private func touchesScreenRight() -> Bool {
+        guard let subject else { return false }
+        let bound = subject.worldBounds.width
+        return subject.frame.maxX >= bound
+    }
+
+    private func touchesScreenBottom() -> Bool {
+        guard let subject else { return false }
+        let bound = subject.worldBounds.height
+        return subject.frame.maxY >= bound
+    }
+
+    private func touchesScreenLeft() -> Bool {
+        guard let subject else { return false }
+        return subject.frame.minX <= 0
+    }
+    
+    // MARK: - Crawling
 
     private func crawlAlongTopBound() {
         guard let subject else { return }
@@ -74,27 +107,5 @@ public class WallCrawler: Capability {
         subject.rotation?.isFlippedHorizontally = false
         subject.rotation?.isFlippedVertically = false
         subject.rotation?.zAngle = .pi * 1.5
-    }
-
-    private func touchesScreenTop() -> Bool {
-        guard let subject else { return false }
-        return subject.frame.minY <= 0
-    }
-
-    private func touchesScreenRight() -> Bool {
-        guard let subject else { return false }
-        let bound = subject.worldBounds.width
-        return subject.frame.maxX >= bound
-    }
-
-    private func touchesScreenBottom() -> Bool {
-        guard let subject else { return false }
-        let bound = subject.worldBounds.height
-        return subject.frame.maxY >= bound
-    }
-
-    private func touchesScreenLeft() -> Bool {
-        guard let subject else { return false }
-        return subject.frame.minX <= 0
     }
 }
