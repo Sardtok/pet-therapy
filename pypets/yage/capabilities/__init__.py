@@ -8,6 +8,6 @@ from .gravity import Gravity
 from .linear_movement import LinearMovement
 from .rotating import Rotating
 from .sprites_provider import SpritesProvider
-# from .seeker import Seeker
-# from .shape_shifter import ShapeShifter
-# from .wall_crawler import WallCrawler
+from .seeker import Seeker, SeekerTargetPosition, SeekerState
+from .shape_shifter import ShapeShifter
+from .wall_crawler import WallCrawler

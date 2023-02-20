@@ -31,8 +31,5 @@ class Species:
     def __repr__(self):
         return self.id
 
-    def __hash__(self):
-        return hash(self.id)
-
 SPECIES_AGENT = Species("agent")
 SPECIES_HOTSPOT = Species("hotspot")

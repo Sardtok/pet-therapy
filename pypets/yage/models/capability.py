@@ -17,10 +17,12 @@ class Capability:
         pass
     
     def kill(self, autoremove=True):
-        if autoremove:
-            self.subject.capabilities = [c for c in self.subject.capabilities if c.tag != self.tag]
+        if autoremove: self._remove_from_subject_capabilities()
         self.subject = None
         self.is_enabled = False
+        
+    def _remove_from_subject_capabilities(self):
+        self.subject.capabilities = [c for c in self.subject.capabilities if c.tag != self.tag]
 
 class CapabilitiesDiscoveryService:
     def capability(self, id: str) -> Optional[Capability]:

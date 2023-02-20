@@ -8,7 +8,21 @@ from yage.utils.logger import Logger
 class AnimationsScheduler(Capability):
     def __init__(self, subject):
         super().__init__(subject)
+        subject.animations_scheduler = self
         self._scheduled_animation = None
+
+    def animate_now(self):
+        animation = self._random_animation()
+        if not animation: return 
+        loops = animation.required_loops or 1
+        self._schedule(animation, loops, 0)
+        Logger.log(self.tag, "Immediate animation requested", animation, f"x{loops}")
+
+    def load_animation(self, animation: EntityAnimation, times: int):
+        if not self.is_enabled: return
+        if not self.subject.is_alive: return 
+        if self.subject.state != EntityState.move: return         
+        self.subject.set_animation(animation, times)
 
     def do_update(self, collisions, time):
         if self._scheduled_animation is not None: 
@@ -39,9 +53,3 @@ class AnimationsScheduler(Capability):
         if date > datetime.now(): return
         self._scheduled_animation = None
         self._load_animation(animation, times)
-
-    def _load_animation(self, animation: EntityAnimation, times: int):
-        if not self.is_enabled: return
-        if not self.subject.is_alive: return 
-        if self.subject.state != EntityState.move: return         
-        self.subject.set_animation(animation, times)

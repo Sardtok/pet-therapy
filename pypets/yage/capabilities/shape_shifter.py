@@ -1,46 +1,41 @@
-"""
-import SwiftUI
+from yage.models.capability import Capability
+from yage.utils.geometry import Rect, Size
 
-class ShapeShifter: Capability {
-    var animationDuracy: float = 1
-    var targetSize: Size = .zero
-    var delta: Size = .zero
+class ShapeShifter(Capability):
+    def __init__(self, subject):
+        super().__init__(subject)
+        self.animation_duracy = 1
+        self.target_size = Size.zero()        
+        self.delta = Size.zero()
 
-    def scaleLinearly(to size: Size, duracy: float) {
-        guard let subject else { return }
-        targetSize = size
+    def scale_linearly(self, size, duracy):
+        self.target_size = size
+        self.original_size = self.subject.frame.size
+        self.delta = Size(
+            width=size.width - self.subject.frame.width,
+            height=size.height - self.subject.frame.height
+        )
+        self.animation_duracy = duracy
+        self.remaining_time = duracy
+        self.is_enabled = True
+
+    def do_update(self, collisions, time):
+        self.subject.frame = self._updated_frame(time)
+        self._check_completion(time)
+
+    def _updated_frame(self, time):
         delta = Size(
-            width: size.width - subject.frame.width,
-            height: size.height - subject.frame.height
+            width=time * self.delta.width / self.animation_duracy,
+            height=time * self.delta.height / self.animation_duracy
         )
-        animationDuracy = duracy
-        is_enabled = True
-    }
-
-    def do_update(self, collisions: List[Collision], time: float) {
-        guard is_enabled else { return }
-        guard let subject else { return }
-
-        let delta = Size(
-            width: time * delta.width / animationDuracy,
-            height: time * delta.height / animationDuracy
+        return Rect(
+            x=self.subject.frame.origin.x - delta.width / 2,
+            y=self.subject.frame.origin.y - delta.height / 2,
+            width=self.subject.frame.width + delta.width,
+            height=self.subject.frame.height + delta.height
         )
-        let newFrame = Rect(
-            x: subject.frame.origin.x - delta.width / 2,
-            y: subject.frame.origin.y - delta.height / 2,
-            width: subject.frame.width + delta.width,
-            height: subject.frame.height + delta.height
-        )
-        subject.frame = newFrame
 
-        checkCompletion(given: delta)
-    }
-
-    def _checkCompletion(given delta: Size) {
-        let distance = sqrt(pow(delta.width, 2) + pow(delta.height, 2))
-        if distance < 0.01 {
-            is_enabled = False
-        }
-    }
-}
-"""
+    def _check_completion(self, time):
+        self.remaining_time -= time
+        if self.remaining_time <= 0.0001:
+            self.is_enabled = False

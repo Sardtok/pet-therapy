@@ -34,6 +34,9 @@ class Point:
             return rect.min_x <= self.x <= rect.max_x
         return False
         
+    def distance(self, other: 'Point') -> float:
+        return math.sqrt(math.pow(self.x - other.x, 2) + math.pow(self.y - other.y, 2))
+
     @classmethod
     def from_vector(self, vector, radius, offset):
         return self(
@@ -65,6 +68,13 @@ class Size:
     def __repr__(self):
         return f'(w: {self.width}, h: {self.height})'
 
+    def diagonal(self) -> float:
+        return math.sqrt(pow(self.width, 2) + pow(self.height, 2))
+    
+    @classmethod
+    def zero(self):
+        return Size(0, 0)
+
 class Rect:
     def __init__(self, x, y, width, height):
         self.origin = Point(x, y)
@@ -95,6 +105,9 @@ class Rect:
     def offset(self, **kwargs):
         new_origin = self.origin.offset(**kwargs)
         return Rect(new_origin.x, new_origin.y, self.size.width, self.size.height)
+
+    def diagonal(self) -> float:
+        return self.size.diagonal()
 
     def __eq__(self, other: Optional['Rect']) -> bool:
         if not other: return False

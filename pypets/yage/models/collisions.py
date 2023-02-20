@@ -1,15 +1,26 @@
 from enum import Enum
 import math
-import pdb
 from yage.utils.geometry import Rect
 
 class Collision:
     def __init__(self, source, other, intersection: 'Rect'):
-        self.other = other
-        self.is_ephemeral = other.is_ephemeral
         self.intersection = intersection
-        self.source_body = source.frame
+        self.is_ephemeral = other.is_ephemeral
         self.is_overlapping = intersection.width >= 1 and intersection.height >= 1
+        self.other = other
+        self.source = source
+        
+    @property
+    def other_id(self): 
+        return self.other.id
+
+    @property
+    def other_body(self): 
+        return self.other.frame
+
+    @property
+    def source_body(self): 
+        return self.source.frame        
 
     def __repr__(self):
         return f'Collision with {self.other.id} at {self.intersection}'
